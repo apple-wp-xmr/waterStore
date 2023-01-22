@@ -1,38 +1,20 @@
-/**
- * @param {string} s
- * @return {number}
- */
-var romanToInt = function(s) {
-    let numbers = []
-    s.split('').forEach((s) => convertToNumber(s))
-};
+$(function () {
+    $('.banner-section__slider').slick({
+        dots: true,
+        prevArrow:
+            '<button class="banner-section__slider-btn banner-section__slider-btnprev"><img src="images/icon/slider-arrow-bl_l.svg" alt=""></button>',
+        nextArrow:
+            '<button class="banner-section__slider-btn banner-section__slider-btnnext"><img src="images/icon/slider-arrow-bl_r.svg" alt=""></button>',
+    });
 
-let convertToNumber= function(n){
-    if(n == I){
-        return 1
-    }
-        if(n == 'I'){
-        return 1
-    }
-        if(n == 'V'){
-        return 5
-    }
-        if(n == 'X'){
-        return 10
-    }
-        if(n == 'L'){
-        return 50
-    }
-        if(n == 'C'){
-        return 100
-    }
-        if(n == 'D'){
-        return 500
-    }
-        if(n == 'M'){
-        return 1000
-    }
-    throw new Error('Parameter not found!');
-}
-
-romanToInt("LVIII")
+    $('.search__tabs-item').on('click', function (e) {
+        e.preventDefault();
+        if (e.target.classList.contains('search__tabs-item--active')) {
+            return;
+        }
+        $('.search__tabs-item').removeClass('search__tabs-item--active');
+        $('.search__content-item').removeClass('search__content-item--active');
+        $(this).addClass('search__tabs-item--active');
+        $('#tab-' + `${$(this).data('id')}`).addClass('search__content-item--active');
+    });
+});
